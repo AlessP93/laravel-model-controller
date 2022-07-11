@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Movies</title>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
     <div class="container">
@@ -13,19 +14,20 @@
                 <h1 class="text-center">I Film più votati</h1>
             </div>
         </div>  
-        <div class="row">
-            <div class="col-2">
-                <ul>
-                    @foreach ($movies as $movie)
-                    <li>
-                        <h4>Titolo originale: {{$movie->original_title}}</h4>
-                        <p>Nazionalità: {{$movie->nationality}}</p>
-                        <p>Data di uscita: {{$movie->date}}</p>
-                        <p>Voto: {{$movie->vote}}</p>
-                    </li> 
-                    @endforeach
-                </ul>
-            </div>
+        <div>
+            <ul class="row">
+                @foreach ($movies as $movie)
+                    <div class="col-3">
+                        <div class="movies">
+                        <a href="{{route("movie", $movie->id)}}">
+                            <li>
+                                <h4>Titolo originale: {{$movie->original_title}}</h4>
+                            </li> 
+                        </a>
+                        </div>
+                    </div>
+                @endforeach
+            </ul>
         </div>
     </div>
 </body>
